@@ -94,17 +94,22 @@
 </head>
 <body>
 
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="/Users/debasish/Downloads/TujheDekhaToYeJanaSanam.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 <div class="box" id="box">
   <h1>Dangerously Important Questions Ahead…</h1>
   <p id="question">Ready to play? 😏</p>
   <div id="buttons">
-    <button class="yes" onclick="next('yes')">Yes 💕</button>
+    <button class="yes" onclick="startMusic(); next('yes')">Yes 💕</button>
     <button class="no" onmouseover="moveNo(this)">No 🙈</button>
   </div>
 </div>
 
 <script>
-
 const quiz = [
   {
     question: "When did we first meet? 🥰",
@@ -125,6 +130,13 @@ const questions = [
 ];
 
 let index = 0;
+
+// START MUSIC ON FIRST CLICK
+function startMusic() {
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.3; // gentle volume
+  music.play();
+}
 
 function next(answer) {
   if (answer !== "yes") return;
